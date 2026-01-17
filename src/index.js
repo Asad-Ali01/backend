@@ -1,12 +1,9 @@
+import "dotenv/config"
 import mongoose from "mongoose";
 import { DB_NAME } from "./constants.js";
 import connectDB from "./db/dbConnection.js";
 import express from 'express';
-import dotenv from 'dotenv'
 import { app } from "./app.js";
-dotenv.config(
-    {path:'./.env'}
-)
 
 
 connectDB()
@@ -18,7 +15,7 @@ connectDB()
         console.log("App error: ",err);
         throw err;
     })
-})
+}) 
 .catch((err) => {
     console.log('MongoDB connection failed !!!',err);
 })
