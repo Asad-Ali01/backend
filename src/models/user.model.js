@@ -62,7 +62,7 @@ userScehma.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password,this.password);
 }
 
-userScehma.methods.genrateAccessToken = function(){
+userScehma.methods.generateAccessToken = function(){
   return jwt.sign(
         {
             _id: this._id,
@@ -76,7 +76,7 @@ userScehma.methods.genrateAccessToken = function(){
         }
     )
 }
-userScehma.methods.genrateRefreshToken = function(){
+userScehma.methods.generateRefreshToken = function(){
      return jwt.sign(
         {
             _id: this._id,
@@ -89,3 +89,4 @@ userScehma.methods.genrateRefreshToken = function(){
 }
 
 export const User = mongoose.model("User",userScehma);
+ 
