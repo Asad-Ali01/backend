@@ -1,6 +1,32 @@
 import mongoose,{Schema} from "mongoose";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+
+const AvatarSchema = new Schema(
+    {
+        url:{
+            type: String, //cloudinary url
+            required:[true, "Avatar URL is required"]
+         },
+         public_id: {
+            type: String, //cloudinary url
+            required:[true, "Avatar public_id is requried"]
+         }
+    }
+)
+
+const CoverImageSchema = new Schema(
+    {
+        url:{
+            type: String, //cloudinary url
+            required:[true, "CoverImage URL is required"]
+         },
+         public_id: {
+            type: String, //cloudinary url
+             required:[true, "CoverImage public_id is requried"]
+         }
+    }
+)
 const userScehma = new Schema(
     {
         username: {
@@ -24,13 +50,17 @@ const userScehma = new Schema(
             trim: true,
             index:true
         },
+
         avatar: {
-            type: String, //cloudinary url
+            type: AvatarSchema,
             required:true
         },
+
         coverImage: {
-            type: String,  //cloudinary url
+        type:CoverImageSchema,
+        required:true
         },
+
         watchHistory: [
              {
                 type: Schema.Types.ObjectId,

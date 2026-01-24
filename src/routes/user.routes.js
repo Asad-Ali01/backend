@@ -26,15 +26,15 @@ router.route("/logout").post(verifyJWT, logoutUser);
 
 router.route("/refresh-token").post(refreshAccessToken);
 
-router.route("/password-change").post(verifyJWT,currentUserPasswordChange);
-router.route("/user-details").post(verifyJWT,getCurrentUser);
-router.route("/update-account-details").post(verifyJWT,updateAccountDetails);
-router.route("/update-user-avatar").post(
-    upload.single('avatar'),
+router.route("/password-change").patch(verifyJWT,currentUserPasswordChange);
+router.route("/user-details").get(verifyJWT,getCurrentUser);
+router.route("/update-account-details").patch(verifyJWT,updateAccountDetails);
+router.route("/update-user-avatar").patch(
     verifyJWT,
+    upload.single('avatar'),
     updateUserAvatar
 );
-router.route("/update-user-cover-image").post(
+router.route("/update-user-cover-image").patch(
     upload.single('coverImage'),
     verifyJWT,
     updateUserCoverImage
