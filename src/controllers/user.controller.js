@@ -391,7 +391,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Channel does not exist");
   }
 
-  console.log("Channel: ", channel);
+
 
   return res
     .status(200)
@@ -410,7 +410,7 @@ const getWatchHistory = asyncHandler(async (req, res) => {
     {
       $lookup: {
         from: "videos",
-        localField: "watchHistroy",
+        localField: "watchHistory",
         foreignField: "_id",
         as: "watchHistory",
         pipeline: [
@@ -441,6 +441,7 @@ const getWatchHistory = asyncHandler(async (req, res) => {
         ],
       },
     },
+    
   ]);
 
 
